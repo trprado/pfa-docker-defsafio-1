@@ -44,3 +44,5 @@ docker run --name pfa-nginx --net=pfa -p 8080:80 -d dockerhubuser/pfa-nginx
 ```
 
 Caso tenha usado as imagens do dockerhub, troque `dockerhubuser` por `trprado`.
+
+> Por questão de simplicidade, e como é um desafio, coloquei junto o `.env` usado no app em `/src` e mantive o Dockerfile do banco de dados com as váriaveis de ambiente. Qualquer coisa basta trocar elas já que em nenhum momento existe algo crítico. Mas não é o melhor a se fazer, porém como a imagem deveria ser salva no desafio e permitisse sua execução sem a necessidade de toda uma configuração, essa foi a forma mais simples.
