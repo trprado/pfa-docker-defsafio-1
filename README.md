@@ -38,9 +38,9 @@ docker network create pfa
 
 Gerando os containers com a rede e executando em segundo plano, onde `dockerhubuser` é seu usuário do dockerhub.io.
 ```bash
-docker run --name pfa-db --net=pfa -d dockerhubuser/pfa-db
-docker run --name pfa-app --net=pfa -d dockerhubuser/pfa-app
-docker run --name pfa-nginx --net=pfa -p 8080:80 -d dockerhubuser/pfa-nginx
+docker run --name pfa-db --rm --net=pfa -d dockerhubuser/pfa-db
+docker run --name pfa-app --rm --net=pfa -d dockerhubuser/pfa-app
+docker run --name pfa-nginx --rm --net=pfa -p 8080:80 -d dockerhubuser/pfa-nginx
 ```
 
 Caso tenha usado as imagens do dockerhub, troque `dockerhubuser` por `trprado`.
