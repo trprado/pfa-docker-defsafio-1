@@ -9,6 +9,8 @@ Este é um desafio Fullcycle no evento Programa Full Cycle de Aceleração.
     
     b. container python https://hub.docker.com/repository/docker/trprado/pfa-app
 
+    c. container nginx https://hub.docker.com/repository/docker/trprado/pfa-nginx
+
 2. Gere uma imagem do nginx que seja capaz que receber as solicitações http e encaminhá-las para o container.
 3. Crie um repositório no github com todo o fonte do programa e das imagens geradas.
 4. Crie um arquivo README.md especificando quais comandos precisamos executar para que a aplicação funcione recebendo as solicitações na porta 8080 de nosso computador. Lembrando que NÃO utilizaremos Docker-compose nesse desafio.
@@ -25,10 +27,11 @@ cd ../nginx
 docker build -t dockerhubuser/pfa-nginx .
 ```
 
-Caso prefira usar a imagem já gerada, porém a do nginx ainda é necessário fazer o `build` da imagem.
+Caso prefira usar a imagem já gerada.
 ```bash
 docker push trprado/pfa-db:v1
 docker push trprado/pfa-app:v1
+docker push trprado/pfa-nginx:v1
 ```
 
 Gerando uma rede para comunicação entre containers.
