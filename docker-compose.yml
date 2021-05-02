@@ -1,0 +1,47 @@
+version: "3.8"
+
+services:
+    pfa-db:
+        image: mariadb:10.5
+        env_file: 
+            - db.env
+        volumes:
+            - ./dbdata/:/docker-entrypoint-initdb.d/
+        expose:
+            - 3306
+        networks:
+            - pfa-ma
+
+    pfa-app:
+        build: ./src/
+        depends_on: 
+            - pfa-db
+        expose:
+            - 8000
+        command: sh -c "dockerize -wait tcp://pfa-db:3306 -timeout 300s -wait-retry-interval 10s && python -u server.py"
+        networks: 
+            - pfa-ma
+            - pfa-ap
+    
+    pfa-nginx:
+        image: nginx:1.19-alpine
+        depends_on: 
+            - pfa-app
+        volumes:
+            - ./nginx/:/etc/nginx/conf.d/
+        ports: 
+            - 8000:80
+        networks: 
+            - pfa-ap
+            - pfa-net
+
+networks:
+    pfa-ma:
+        name: network-pfa-db-app
+        internal: true
+    pfa-ap:
+        name: network-pfa-app-proxy
+        internal: true
+    pfa-net:
+        name: network-proxy
+        driver: bridge
