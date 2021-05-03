@@ -14,4 +14,4 @@ RUN pip install -r requirements.txt
 
 CMD [ "python", "-u", "server.py" ]
 
-EXPOSE 8000
+EXPOSE 3000

@@ -63,6 +63,6 @@ def generate_index(html):
     return index
 
 PORT = 8000
-with HTTPServer(('0.0.0.0', 8000), handler) as server:
+with HTTPServer(('0.0.0.0', 3000), handler) as server:
     print("serving at port", PORT)
     server.serve_forever()
